@@ -19,7 +19,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback' // This is the route the user takes after OAuth from Google
+      callbackURL: `${keys.googleRedirectURI}/auth/google/callback`, // This is the route the user takes after OAuth from Google
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({googleId: profile.id})
