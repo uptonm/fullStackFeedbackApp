@@ -1,16 +1,8 @@
-.font span {
-  color: white;
+body, html {
+  background-color: slategray;
 }
-.btn-pad{
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 10px;
-}
-.btn-outline {
-  border: 1px solid white;
-  color: white;
-}
-.btn-outline:hover {
-  background: rgba(200,200,200,0.3);
-  color: white;
+
+.card {
+  margin: 0 auto;
+  padding-bottom: 5%;
 }

@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-module.exports = (app) => {
+module.exports = (app) => { // User attempts to login, begin the oAuth flow
   app.get(
     '/auth/google',
     passport.authenticate('google', {
@@ -8,7 +8,14 @@ module.exports = (app) => {
     })
   );
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback', 
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys'); // User logs in, send them to the dashboard
+    }
+  );
+  
 
   app.get('/api/current_user', (req, res) => {
     if(req.user) { // Does user exist?/ are they logged in?
@@ -20,7 +27,7 @@ module.exports = (app) => {
   
   app.get('/api/logout', (req, res) => {
     req.logout();
-    res.send({message: 'Goodbye'});
+    res.redirect('/'); // User logs out, bring them back to the home page
   })
   
 };
