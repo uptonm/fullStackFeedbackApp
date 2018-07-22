@@ -14,8 +14,8 @@ module.exports = (app) => {
     if(req.user) { // Does user exist?/ are they logged in?
       res.send(req.user);
     } else {
-      res.send({message: 'User not found! Did you logout?'})
-    }  
+      res.send('');
+    }
   });
   
   app.get('/api/logout', (req, res) => {

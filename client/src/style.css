@@ -1,0 +1,16 @@
+.font span {
+  color: white;
+}
+.btn-pad{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+}
+.btn-outline {
+  border: 1px solid white;
+  color: white;
+}
+.btn-outline:hover {
+  background: rgba(200,200,200,0.3);
+  color: white;
+}
