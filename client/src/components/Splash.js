@@ -11,7 +11,6 @@ class Splash extends Component {
       default:
         return '/surveys';
     }
-    return (<div></div>);
   }
   render() {
     return (
