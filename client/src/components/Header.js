@@ -19,7 +19,9 @@ class Header extends Component {
       default:
         return (
         <ul className='right'>
-          <li><a className='btn-large waves-effect waves-light blue-gray'>Credits: {this.props.auth.credits}</a></li>
+          <li>
+            <a className='btn-large waves-effect waves-light blue-gray'>Credits: {this.props.auth.credits}</a>
+          </li>
           <li><Payments /></li>
           <li>
             <a href='/api/logout' className='btn-large waves-effect waves-light blue-gray'>Log Out</a>
