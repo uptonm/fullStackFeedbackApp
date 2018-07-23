@@ -5,6 +5,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/user');
+require('./models/survey');
 require('./services/passport'); // Passport handles oAuth
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
@@ -24,6 +25,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app); // Calls function exported from authRoutes
 require('./routes/paymentRoutes')(app); // Calls functions exported from paymentRoutes
+require('./routes/surveyRoutes')(app);
 
 if(process.env.NODE_ENV === 'production') {
   // Express will serve prod assets i.e. main.js/main.class

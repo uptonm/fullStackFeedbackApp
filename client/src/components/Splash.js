@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Splash extends Component {
+  getLink() {
+    switch(this.props.auth) {
+      case null:
+        return '/';
+      case false:
+        return '/auth/google';
+      default:
+        return '/surveys';
+    }
+    return (<div></div>);
+  }
   render() {
     return (
       <div className='section'>
@@ -14,7 +26,7 @@ class Splash extends Component {
               <h5 className='head col s12 light'>This is filler text, we should probably replace this!</h5>
             </div>
             <div id='subtitle-btn' className='row center'>
-              <a href="/auth/google" className="btn-large waves-effect waves-light blue-gray">
+              <a href={this.getLink()} className="btn-large waves-effect waves-light blue-gray">
               Get Started</a>
             </div>
           </div>
@@ -24,4 +36,8 @@ class Splash extends Component {
   }
 }
 
-export default Splash;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Splash);
