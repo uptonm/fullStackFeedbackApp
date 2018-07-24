@@ -24,10 +24,21 @@ body, html {
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
 }
+.splash {
+  padding-bottom: 5% !important;
+}
 .card {
   margin: 0 auto;
-  padding-bottom: 5%;
+  padding-bottom: 5px;
 }
 .section {
   padding-bottom: 5px;
+}
+.dash {
+  margin-top: 10px;
+}
+.status {
+  border-top: 20px solid #26a69a;
+  border-bottom: 20px solid #26a69a;
+  height: 100%;
 }

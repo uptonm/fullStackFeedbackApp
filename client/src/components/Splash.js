@@ -15,7 +15,7 @@ class Splash extends Component {
   render() {
     return (
       <div className='section'>
-        <div className='card container center-block'>
+        <div className='card container center-block splash'>
           <div className='container'>
             <br />
             <br />

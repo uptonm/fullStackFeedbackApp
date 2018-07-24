@@ -28,6 +28,5 @@ module.exports = (app) => { // User attempts to login, begin the oAuth flow
   app.get('/api/logout', (req, res) => {
     req.logout();
     res.redirect('/'); // User logs out, bring them back to the home page
-  })
-  
+  })  
 };
