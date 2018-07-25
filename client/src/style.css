@@ -24,11 +24,38 @@ body, html {
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
 }
+
+.danger {
+  color: white;
+  background: #ff6961;
+}
+
+.bluegray {
+  color: white;
+  background: #26a69a;
+}
+
+.btn-small {
+    margin-right: 10px;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-transform: uppercase;
+    max-font-size: 13pt;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .splash {
   padding-bottom: 5% !important;
 }
 .card {
-  margin: 0 auto;
+  margin: auto;
+  width: 100%;
   padding-bottom: 5px;
 }
 .section {
@@ -40,5 +67,10 @@ body, html {
 .status {
   border-top: 20px solid #26a69a;
   border-bottom: 20px solid #26a69a;
+  height: 100%;
+}
+.status-thin {
+  border-top: 10px solid #26a69a;
+  border-bottom: 10px solid #26a69a;
   height: 100%;
 }
