@@ -19,7 +19,7 @@ class SurveyCard extends Component {
           </div>
         </nav>
         <div className='row'>
-          <div className='col s6'>
+          <div className='col s5'>
             <div style={{marginLeft:'10px', marginTop:'-5px'}}>
               <p>
                 <strong>Subject Line:</strong> <br/>
