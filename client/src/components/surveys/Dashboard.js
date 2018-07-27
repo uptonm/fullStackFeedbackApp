@@ -16,14 +16,13 @@ class Dashboard extends Component {
     console.log(arr);
     return arr.map(item => {
       return (
-      <div className='container'>
         <SurveyCard 
+          key={item.title}
           title={item.title}
           subject={item.subject}
           body={item.body}
           emails={item.emails}
         />
-      </div>
       );
     });
   }

@@ -24,10 +24,18 @@ body, html {
   -moz-font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
 }
-
+.danger-text {
+  color: hsl(3,90%,75%);
+}
 .danger {
   color: white;
-  background: #ff6961;
+  background: hsl(3,90%,75%) !important;
+}
+.danger:hover {
+  background: hsl(3,90%,70%);
+}
+.danger:focus {
+  background: hsl(1,60%,60%);
 }
 
 .bluegray {
