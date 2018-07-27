@@ -25,12 +25,12 @@ class SurveyNew extends Component {
   render() {
     return(
       <div className='container white-text' style={{paddingTop:'40px'}}>
-        <div className='card status-thin'style={{height:'600px'}}>
+        <div className='card status-thin'style={{height:'700px'}}>
           <h1 className='center-align black-text'>Create A Survey Campaign</h1>
           <div style={{padding:'40px', paddingTop:'0px'}}>
             <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} style={{paddingBottom:'40px'}}>
               {this.renderFields()}
-              <div className='card-content center' style={{marginTop:'40px'}}>
+              <div className='card-content center' style={{marginTop:'0px'}}>
                 <div style={{display:'grid', gridTemplateColumns:'auto 200px 200px auto', gridColumnGap:'20px'}}>
                   <span></span>
                   <Link to='/surveys' className='btn-large danger'>

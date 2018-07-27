@@ -5,7 +5,7 @@ import SurveyReviewField from './SurveyReviewField';
 const SurveyFormReview = ({ onCancel, formValues }) => {
   return (
     <div className='container white-text' style={{padding:'40px', paddingLeft:'0px',paddingRight:'0px'}}>
-      <div className='card status-thin' style={{height:'600px', width:
+      <div className='card status-thin' style={{height:'700px', width:
     '100%', padding:'0px'}}>
         <h1 className='center-align black-text'>Review Entries</h1>
           <div>
