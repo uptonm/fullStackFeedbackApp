@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
-import {BarChart, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts';
-const data = [
-      {name: '11/12', yes: getRand(20), no: getRand(20)},
-      {name: '11/13', yes: getRand(20), no: getRand(20)},
-      {name: '11/14', yes: getRand(20), no: getRand(20)},
-      {name: '11/15', yes: getRand(20), no: getRand(20)}
-];
-function getRand(max) {
-  return Math.floor(Math.random() * max);
-}
+import React, { Component } from 'react';  
+import SimplePieChart from './PieChart_View';
+import BChart from './BarChart_View';
+
 class SurveyCard extends Component {
   render() {
     return (
@@ -23,7 +16,7 @@ class SurveyCard extends Component {
           </div>
         </nav>
         <div className='row' style={{height:'100%'}}>
-          <div className='col s7' style={{height:'300px'}}>
+          <div className='col s4' style={{height:'300px'}}>
             <div style={{marginLeft:'10px', marginTop:'-5px'}}>
               <p>
                 <strong>Subject Line:</strong> <br/>
@@ -35,16 +28,9 @@ class SurveyCard extends Component {
               </p>
             </div>
           </div>
-          <div className='col s4' style={{marginTop:'30px'}}>
-            <BarChart width={400} height={300} data={data}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-              <XAxis dataKey='name'/>
-              <YAxis />
-              <Tooltip />
-              <Bar type="monotone" dataKey="yes" barSize={30} fill="#26a69a"/>
-              <Bar type="monotone" dataKey="no" barSize={30} fill="#455a64"/>
-              <Legend />
-            </BarChart>
+          <div className='right' style={{display:'grid', gridTemplateColumns:'auto auto', marginTop:'20px',marginRight:'40px'}}>
+            <SimplePieChart />
+            <BChart />
           </div>
         </div>
       </div>

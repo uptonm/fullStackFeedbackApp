@@ -4,12 +4,12 @@ import SurveyReviewField from './SurveyReviewField';
 
 const SurveyFormReview = ({ onCancel, formValues }) => {
   return (
-    <div className='container white-text' style={{padding:'40px', paddingLeft:'0px',paddingRight:'0px'}}>
+    <div className='container white-text' style={{paddingTop:'40px', paddingLeft:'0px',paddingRight:'0px', paddingBottom:'0px'}}>
       <div className='card status-thin' style={{height:'700px', width:
     '100%', padding:'0px'}}>
         <h1 className='center-align black-text'>Review Entries</h1>
           <div>
-            <div style={{paddingLeft:'40px',paddingRight:'40px',paddingBottom:'40px'}}>
+            <div style={{paddingLeft:'40px',paddingRight:'40px',paddingBottom:'0px'}}>
               <SurveyReviewField label='Survey Title' value={formValues.title} />
               <SurveyReviewField label='Subject Line' value={formValues.subject} />
               <SurveyReviewField label='Email Body' value={formValues.body} />

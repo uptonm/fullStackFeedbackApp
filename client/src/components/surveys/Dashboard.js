@@ -29,7 +29,7 @@ class Dashboard extends Component {
   
   render() {
     return(
-    <div className='container' style={{marginTop:'20px'}}>
+    <div className='container' style={{marginTop:'20px', marginBottom:'100px'}}>
       {this.renderSurveys()}
 
       <div className='fixed-action-btn'>

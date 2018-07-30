@@ -1,5 +1,16 @@
 body, html {
   background-color: slategray;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  margin-top: 92px;
 }
 /* fallback */
 @font-face {
@@ -41,6 +52,12 @@ body, html {
 .bluegray {
   color: white;
   background: #26a69a;
+}
+
+
+.slate-grey {
+  color: white;
+  background: #455a64;
 }
 
 .btn-small {
