@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import SurveyReviewField from './SurveyReviewField';
 
-const SurveyFormReview = ({ onCancel, formValues }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
   return (
     <div className='container white-text' style={{paddingTop:'40px', paddingLeft:'0px',paddingRight:'0px', paddingBottom:'0px'}}>
       <div className='card status-thin' style={{height:'700px', width:
@@ -18,7 +19,7 @@ const SurveyFormReview = ({ onCancel, formValues }) => {
                 <div style={{display:'grid', gridTemplateColumns:'auto 200px 200px auto', gridColumnGap:'20px'}}>
                   <span></span>
                   <button className='btn-large danger' onClick={onCancel}>Edit</button>
-                  <button className='btn-large bluegray'>Submit</button>
+                  <button className='btn-large bluegray' onClick={() => submitSurvey(formValues)}>Send Survey</button>
                   <span></span>
                 </div>
               </div>
@@ -36,4 +37,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SurveyFormReview);
+export default connect(mapStateToProps, actions)(SurveyFormReview);

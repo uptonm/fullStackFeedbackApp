@@ -13,7 +13,6 @@ class Dashboard extends Component {
         emails: `Recipient List ${i + 1}`
       }
     }
-    console.log(arr);
     return arr.map(item => {
       return (
         <SurveyCard 

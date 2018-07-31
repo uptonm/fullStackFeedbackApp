@@ -29,7 +29,7 @@ class SurveyCard extends Component {
             </div>
           </div>
           <div className='right' style={{display:'grid', gridTemplateColumns:'auto auto', marginTop:'20px',marginRight:'40px'}}>
-            <SimplePieChart />
+            {/*<SimplePieChart />*/}
             <BChart />
           </div>
         </div>

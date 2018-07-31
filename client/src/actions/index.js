@@ -12,3 +12,8 @@ export const handleToken = token => async dispatch => {
   
   dispatch({type: FETCH_USER, payload: res.data});
 };
+
+export const submitSurvey = values => {
+  console.log('I ran')
+  return ({type:'SUBMIT_SURVEY'});
+};
