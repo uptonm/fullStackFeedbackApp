@@ -4,13 +4,8 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
+import { FIELDS } from './formFields';
 
-const FIELDS = [
-  {label: 'Survey Title', name: 'title'},
-  {label: 'Subject Line', name: 'subject'},
-  {label: 'Email Body', name: 'body'},
-  {label: 'Recipient List', name: 'emails'}
-];
 class SurveyNew extends Component {
   renderFields() {
     return(
@@ -57,7 +52,7 @@ function validate(values) {
     }
   });
   
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
   return errors;
 }
 

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {BarChart, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts';
-import {data} from './data';
 
 class BChart extends Component {
   render() {
     return (
-      <BarChart 
-        width={400} 
-        height={300} 
-        data={data}
+      <BarChart
+        width={400}
+        height={300}
+        data={this.props.data}
         margin={{top: 5, right: 30, left: 20, bottom: 5}}
         >
           <XAxis dataKey='name'/>

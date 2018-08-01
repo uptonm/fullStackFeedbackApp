@@ -1,6 +1,7 @@
-import React, { Component } from 'react';  
-import SimplePieChart from './PieChart_View';
+import React, { Component } from 'react';
 import BChart from './BarChart_View';
+import {data} from './data';
+// import SimplePieChart from './PieChart_View';
 
 class SurveyCard extends Component {
   render() {
@@ -30,7 +31,7 @@ class SurveyCard extends Component {
           </div>
           <div className='right' style={{display:'grid', gridTemplateColumns:'auto auto', marginTop:'20px',marginRight:'40px'}}>
             {/*<SimplePieChart />*/}
-            <BChart />
+            <BChart data={data} />
           </div>
         </div>
       </div>

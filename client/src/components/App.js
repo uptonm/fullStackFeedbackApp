@@ -16,7 +16,7 @@ class App extends Component {
     this.props.fetchUser();
   }
   render() {
-    return( 
+    return(
       <div>
         <BrowserRouter>
           <div>
@@ -30,7 +30,7 @@ class App extends Component {
               <Route path='/surveys/new' component={SurveyNew} />
               <Route exact path='/surveys/thanks' component={SurveyThanks} />
             </main>
-            
+
           </div>
         </BrowserRouter>
       </div>
@@ -38,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);  
+export default connect(null, actions)(App);
