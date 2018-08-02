@@ -10,37 +10,40 @@ const Survey = mongoose.model('surveys');
 
 module.exports = app => {
   app.get('/api/surveys/:id/yes', (req, res) => {
-    res.send({
-        "response":"yes",
-        "message": "Thanks!"
-    });
+    res.redirect('/surveys/thanks');
   });
 
   app.get('/api/surveys/:id/no', (req, res) => {
-    res.send({
-        "response":"no",
-        "message": "Thanks!"
-    });
+    res.redirect('/surveys/thanks');
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    const events = _.map(req.body, ({email, url}) => {
-      const pathname = new URL(url).pathname; //Take full url and extract path from it '/api/surveys/:id/:response'
-      const p = new Path('/api/surveys/:surveyId/:choice');
-      const match = p.test(pathname);
-      if(match) {
-        return {
-          email,
-          surveyId: match.surveyId,
-          choice: match.choice
-        };
-      }
-    });
-    const compactEvents = _.compact(events);
-    const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
-    console.log(uniqueEvents);
+    // Regex to check route format
+    const p = new Path('/api/surveys/:surveyId/:choice');
 
-    res.send({}); // tell sendGrid to shut the fuck up
+    _.chain(req.body) // Chain of _dash helper messages to improve readibility
+      .map(({email, url}) => { // Map through requests checking if url route matches above regex
+        const match = p.test(new URL(url).pathname);
+        if(match) {
+          return { email, surveyId: match.surveyId, choice: match.choice }; // If it matches return object
+        }
+      })
+      .compact() // Remove falsey values : (undefined, null, false)
+      .uniqBy("email", "surveyId") // Remove duplicate values for email & surveyID together
+      .each(({ surveyId, email, choice }) => {
+        Survey.updateOne({
+          _id: surveyId, // Find an id with surveyId
+          recipients: { // Check if the person being updated has already responded
+            $elemMatch: { email:email, responded: false }
+          }
+        }, {
+          $inc: { [choice]: 1 }, // If they have not responded, inc the choice by 1
+          $set: { 'recipients.$.responded': true } // Set the recipient to responded true
+        }).exec();
+      })
+      .value(); // Execute the chain sequence
+
+    res.send({}); // Normally this would be async but it does not need to wait for the query to exec
   });
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
@@ -49,7 +52,7 @@ module.exports = app => {
       title,
       subject,
       body,
-      recipients: recipients.split(',').map(email => ({ email: email.trim() })),
+      recipients: recipients.split(',').map(email => ({ email: email.toLowerCase().trim() })),
       _user: req.user.id,
       dateSent: Date.now()
     });

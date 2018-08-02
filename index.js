@@ -23,15 +23,15 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/authRoutes')(app); // Calls function exported from authRoutes
-require('./routes/paymentRoutes')(app); // Calls functions exported from paymentRoutes
-require('./routes/surveyRoutes')(app);
+require('./routes/authRoutes')(app); // Calls routes for oAuth
+require('./routes/paymentRoutes')(app); // Calls routes for payment
+require('./routes/surveyRoutes')(app); // Calls routes for surveyRoutes
 
 if(process.env.NODE_ENV === 'production') {
   // Express will serve prod assets i.e. main.js/main.class
   app.use(express.static('client/build')); // If a route is unrecognized, look at react build
-  
-  // Express will serve up index.html if it doesn't recognize the route 
+
+  // Express will serve up index.html if it doesn't recognize the route
   const path = require('path');
   app.get('*', (req, res) => { // Serve the client the document in that case
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
