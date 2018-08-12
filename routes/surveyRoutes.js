@@ -9,12 +9,12 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
-  app.get('/api/surveys/:id/yes', (req, res) => {
-    res.redirect('/surveys/thanks');
-  });
-
-  app.get('/api/surveys/:id/no', (req, res) => {
-    res.redirect('/surveys/thanks');
+  app.get('/api/surveys/:id/:choice', (req, res) => {
+      if(req.params.choice === 'yes') {
+        res.redirect('/surveys/thanks/yes');
+      } else {
+        res.redirect('/surveys/thanks/no');
+      }
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
@@ -38,7 +38,8 @@ module.exports = app => {
           }
         }, {
           $inc: { [choice]: 1 }, // If they have not responded, inc the choice by 1
-          $set: { 'recipients.$.responded': true } // Set the recipient to responded true
+          $set: { 'recipients.$.responded': true }, // Set the recipient to responded true
+          lastResponded: new Date()
         }).exec();
       })
       .value(); // Execute the chain sequence
